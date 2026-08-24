@@ -109,7 +109,7 @@ def aggregate_by_sample(data_dict: Dict, categories: List[str],
                 # This is for categories with subsamples
                 for subsample, count in counts.items():
                     if isinstance(count, dict):
-                        sample_data[era][subsample][category] += count[variation]
+                        sample_data[era][subsample][category] += count.get(variation, 0)
                     elif not isinstance(count, (int, float)):
                         raise NotImplementedError(
                             f"""Unexpected count type {type(count)} for category '{category}' and subsample '{subsample}'.
